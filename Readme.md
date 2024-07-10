@@ -38,33 +38,38 @@ The `MagicArena` class manages the game logic and the interaction between the tw
 
 ## Usage
 
-1. **Create Players**: Instantiate the `Player` objects with the desired attributes.
+1. **Install node modules**: open the terminal and install packages using
+    ```cmd
+    npm install
+    ```
+
+2. **Create Players**: Instantiate the `Player` objects with the desired attributes in `index.js` file.
     ```javascript
     const p1 = new Player(50, 10, 5, "Goku");
     const p2 = new Player(100, 5, 10, "Naruto");
     ```
 
-2. **Initialize the Game**: Create a `MagicArena` object with the two players.
+3. **Initialize the Game**: Create a `MagicArena` object with the two players in `index.js` file.
     ```javascript
     const game = new MagicArena(p1, p2);
     ```
 
-3. **Simulate the Game**: Start the game simulation.
+4. **Simulate the Game**: Start the game simulation.
     ```javascript
     game.simulateTillEnd();
     ```
 
-4. **Run the code**
+5. **Run the code**
     ```terminal
     npm start
     ```
 
-5. **Run tests**
+6. **Run tests**
     ```jest
     npm test
     ```
 
-6. **Run full test coverage**
+7. **Run full test coverage**
     ```jest
     npm run coverage
     ```
