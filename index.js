@@ -8,6 +8,6 @@ const p2 = new Player(100,5,10, "Naruto");
 
 const game = new MagicArena(p2,p1);
 
-game.stats();
+game.simulateTillEnd();
 
 // console.log(p1.health,p2.health);
