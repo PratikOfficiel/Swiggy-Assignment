@@ -30,6 +30,7 @@ class MagicArena {
         return Math.floor(Math.random()*(6))+1;
     }
 
+    // returns the outcomes of dice play by players
     rollDice() {
         const attackingDiceScore = this.getRandomInt();
         const defendingDiceScore = this.getRandomInt();
@@ -37,6 +38,7 @@ class MagicArena {
         return [attackingDiceScore,defendingDiceScore];
     }
 
+    // helper function 
     playUtil(attackingPlayer, defendingPlayer) {
         const [attackingDiceScore,defendingDiceScore] = this.rollDice();
         const damage = Math.max(0, attackingPlayer.attack*attackingDiceScore - defendingPlayer.strength*defendingDiceScore);
@@ -59,6 +61,7 @@ class MagicArena {
         }
     }
 
+    // give the current status of health of both players
     stats() {
         const currentStatus =  `${this.#Player1.name} => health: ${this.#Player1.health}\n${this.#Player2.name} => health: ${this.#Player2.health}`
         // console.log(currentStatus.split(/[\s\n]+/))
@@ -66,6 +69,7 @@ class MagicArena {
         return currentStatus;
     }
 
+    // returns the result of one match
     play() {
 
         if(this.turn==0){
@@ -78,6 +82,7 @@ class MagicArena {
         this.turn = 1-this.turn;
     }
 
+    // method to automatically run the matches until a winner is found
     simulateTillEnd () {
         
         while(this.#Player1.health>0 && this.#Player2.health>0){
@@ -96,12 +101,14 @@ class MagicArena {
 
     }
 
-    getHealthOfPlayer1() {
-        return this.#Player1.health;
+    // for testing purpose
+
+    getPlayer1details() {
+        return this.#Player1;
     }
 
-    getHealthOfPlayer2() {
-        return this.#Player1.health;
+    getPlayer2details() {
+        return this.#Player2;
     }
     
 }

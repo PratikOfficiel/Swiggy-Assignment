@@ -13,8 +13,8 @@ describe("MagicArena General tests", ()=>{
 
     it("Players are initialized Properly",() => {
 
-        const healthOfP1 = game.getHealthOfPlayer1();
-        const healthOfP2 = game.getHealthOfPlayer2();
+        const healthOfP1 = game.getPlayer1details().health;
+        const healthOfP2 = game.getPlayer2details().health;
 
         const healthOf_P1_LessThanHealthOf_P2 = (healthOfP1<=healthOfP2);
 
@@ -46,5 +46,56 @@ describe("MagicArena General tests", ()=>{
         }
 
         expect(turnValueWorkingFine).toBe(true);
+    })
+
+    it("Doesn't modify the original Players", ()=>{
+        game.simulateTillEnd();
+
+        const expectedPlayer1 = {
+            health: 100,
+            attack: 10,
+            strength: 5,
+            name: "Goku"
+        }
+
+        const expectedPlayer2 = {
+            health: 50,
+            attack: 5,
+            strength: 10,
+            name: "Naruto"
+        }
+
+        expect(player1).toEqual(expectedPlayer1);
+        expect(player2).toEqual(expectedPlayer2);
+    });
+
+    it("Ends in victory of one user", ()=>{
+        game.simulateTillEnd();
+
+        let thereIsAWinner = false;
+
+        if((game.getPlayer1details().health===0 && game.getPlayer2details().health!==0) || (game.getPlayer2details().health===0 && game.getPlayer1details().health!==0)){
+            thereIsAWinner = true;
+        }
+
+        expect(thereIsAWinner).toBe(true);
+    })
+});
+
+describe("MagicalArena Specific feature test", ()=> {
+
+    it("Gives default Names to unnamed Players", ()=>{
+        const p1 = new Player(100,50,10); //name not given to p1 at initiallization
+        const p2 = new Player(50,5,10, "Naruto");
+
+        const game = new MagicArena(p1,p2);
+
+        let defaultNameGiven = false;
+
+        if(game.getPlayer1details.hasOwnProperty("name") && game.getPlayer2details.hasOwnProperty("name")){
+            defaultNameGiven = true;
+        }
+
+        expect(defaultNameGiven).toBe(true);
     })
 })
