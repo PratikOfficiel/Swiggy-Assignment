@@ -34,13 +34,14 @@ The `MagicArena` class manages the game logic and the interaction between the tw
 - **stats()**: Returns the current health of both players.
 - **play()**: Manages the turn-taking logic.
 - **simulateTillEnd()**: Simulates the game until one of the players' health reaches zero.
+- **helperFunctions**: Some methods to help in testing and debugging
 
 ## Usage
 
 1. **Create Players**: Instantiate the `Player` objects with the desired attributes.
     ```javascript
     const p1 = new Player(50, 10, 5, "Goku");
-    const p2 = new Player(100, 5, 10);
+    const p2 = new Player(100, 5, 10, "Naruto");
     ```
 
 2. **Initialize the Game**: Create a `MagicArena` object with the two players.
@@ -55,7 +56,17 @@ The `MagicArena` class manages the game logic and the interaction between the tw
 
 4. **Run the code**
     ```terminal
-    node index.js
+    npm start
+    ```
+
+5. **Run tests**
+    ```jest
+    npm test
+    ```
+
+6. **Run full test coverage**
+    ```jest
+    npm run coverage
     ```
 
 ## Example
